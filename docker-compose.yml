@@ -5,7 +5,8 @@ services:
   backup:
     image: ghcr.io/silkkycloud/restic:0.12.1
     deploy:
-      mode: global
+      mode: replicated
+      replicas: 1
       placement:
         constraints:
           - "node.labels.web_server == true"
