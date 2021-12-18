@@ -39,6 +39,9 @@ RUN mkdir -p /mnt/restic \
 COPY ./docker-entrypoint.sh /docker-entrypoint.sh
 COPY ./backup.sh /bin/backup
 
+RUN chmod +x docker-entrypoint.sh \
+    && chmod +x /bin/backup
+
 ENTRYPOINT ["/sbin/tini", "--", "/docker-entrypoint.sh"]
 
 CMD ["tail", "-fn0", "/var/log/cron.log"]
