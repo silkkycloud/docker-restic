@@ -12,6 +12,8 @@ services:
       update_config:
         parallelism: 1
         failure_action: rollback
+    volumes:
+      - data:/data
     secrets:
       - source: restic-key
         target: restic.key
@@ -26,6 +28,9 @@ services:
       - RESTIC_JOB_ARGS=${RESTIC_JOB_ARGS}
       # - RESTIC_FORGET_ARGS=
       - MAILX_ARGS=${MAILX_ARGS}
+
+volumes:
+  data:
 
 secrets:
   restic-key:
