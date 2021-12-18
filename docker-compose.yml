@@ -20,7 +20,6 @@ services:
         mode: 0600
     environment:
       - RESTIC_REPOSITORY=${RESTIC_REPOSITORY}
-      - RESTIC_TAG=${RESTIC_TAG}
       - RESTIC_PASSWORD_FILE=/run/secrets/restic.key
       - B2_ACCOUNT_ID=${B2_ACCOUNT_ID}
       - B2_ACCOUNT_KEY=${B2_ACCOUNT_KEY}

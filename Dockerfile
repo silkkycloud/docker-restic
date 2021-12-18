@@ -8,7 +8,6 @@ FROM alpine:3.15
 ARG RESTIC_VERSION
 
 ENV RESTIC_REPOSITORY="/mnt/restic" \
-    RESTIC_TAG="" \
     RESTIC_PASSWORD_FILE="/run/secrets/restic.key" \
     B2_ACCOUNT_ID="" \
     B2_ACCOUNT_KEY="" \

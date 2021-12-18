@@ -21,7 +21,7 @@ logLast "RESTIC_REPOSITORY: ${RESTIC_REPOSITORY}"
 logLast "RESTIC_FORGET_ARGS: ${RESTIC_FORGET_ARGS}"
 logLast "RESTIC_JOB_ARGS: ${RESTIC_JOB_ARGS}"
 
-restic backup /data "${RESTIC_JOB_ARGS}" --tag="${RESTIC_TAG?"Missing environment variable RESTIC_TAG"}" >> ${lastLogFile} 2>&1
+restic backup /data "${RESTIC_JOB_ARGS}" >> ${lastLogFile} 2>&1
 backupRC=$?
 logLast "Finished backup at $(date)"
 if [ $backupRC = 0 ]; then
