@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+
+  backup:
+    image: ghcr.io/silkkycloud/restic:0.12.1
+    deploy:
+      mode: global
+      placement:
+        constraints:
+          - "node.labels.web_server == true"
+      update_config:
+        parallelism: 1
+        failure_action: rollback
+    secrets:
+      - source: restic-key
+        target: restic.key
+        mode: 0600
+    environment:
+      - RESTIC_REPOSITORY=${RESTIC_REPOSITORY}
+      - RESTIC_TAG=${RESTIC_TAG}
+      - RESTIC_PASSWORD_FILE=/run/secrets/restic.key
+      - B2_ACCOUNT_ID=${B2_ACCOUNT_ID}
+      - B2_ACCOUNT_KEY=${B2_ACCOUNT_KEY}
+      - BACKUP_CRON=${CRON}
+      - RESTIC_JOB_ARGS=${RESTIC_JOB_ARGS}
+      # - RESTIC_FORGET_ARGS=
+      - MAILX_ARGS=${MAILX_ARGS}
+
+secrets:
+  restic-key:
+    external: true
