@@ -21,7 +21,6 @@ RUN apk add --no-cache \
     curl \
     bzip2 \
     tini \
-    tail \
     heirloom-mailx \
     fuse
 
