@@ -50,7 +50,7 @@ end=$(date +%s)
 echo "Finished Backup at $(date +"%Y-%m-%d %H:%M:%S") after $((end-start)) seconds"
 
 if [ -n "${MAILX_ARGS}" ]; then
-  sh -c "mailx -v -s "Backups "$(date +"%Y-%m-%d %H:%M:%S")"" -S sendwait ${MAILX_ARGS} < ${lastLogFile} > ${lastMailLogFile} 2>&1"
+  sh -c "mailx -v -s "Backups $(date +"%Y-%m-%d %H:%M:%S")" -S sendwait ${MAILX_ARGS} < ${lastLogFile} > ${lastMailLogFile} 2>&1"
   if [ $? = 0 ]; then
     echo "Mail notification successfully sent."
   else
